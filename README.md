@@ -8,7 +8,7 @@ This is a research project where I am building the multiplayer code on top of AW
 	2. Research different AWS services and choose best suited for the use case.
 	3. Testing for scaling and support. 
 
-# Research:
+# Resources:
 GDC talks and Tutorials being used for the project can be found at *[link](https://docs.google.com/spreadsheets/d/1rYbCugIDJeewsHSxHRQ65mhBmB13Ui00EbTWOu1p5P4/edit?usp=sharing)*
 
 
