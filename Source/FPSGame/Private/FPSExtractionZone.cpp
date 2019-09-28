@@ -1,9 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "FPSExtractionZone.h"
+#include "FPSCharacter.h"
+#include "FPSGameMode.h"
 #include "Components/BoxComponent.h"
 #include "Components/DecalComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AFPSExtractionZone::AFPSExtractionZone()
@@ -33,4 +35,23 @@ void AFPSExtractionZone::HandleOverlap(UPrimitiveComponent* OverlappedComp, AAct
 						const FHitResult& SweepResult)
 {
 	UE_LOG(LogTemp, Log, TEXT("Overlapped with extraction zone"));
+	
+
+	AFPSCharacter* MyPawn = Cast<AFPSCharacter>(OtherActor);
+	
+	if (!MyPawn)
+	{
+		return;
+	}
+	if(MyPawn->bIsCarryingObjective) 
+	{
+		AFPSGameMode* GameMode = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
+		if(GameMode)
+		GameMode->CompleteMission(MyPawn);
+	}
+	else
+	{
+		UGameplayStatics::PlaySound2D(this, ObjectiveMissingSound);
+	}
+
 }
