@@ -17,7 +17,7 @@ AFPSGameMode::AFPSGameMode()
 }
 
 
-void AFPSGameMode::CompleteMission(APawn* Pawn)
+void AFPSGameMode::CompleteMission(APawn* Pawn, bool MissionSuccess)
 {
 
 	if (SpectatingActorClasses &&  Pawn)
@@ -43,5 +43,5 @@ void AFPSGameMode::CompleteMission(APawn* Pawn)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("SpectatingActorClasses or pawn is null"));
 	}
-	OnMissionComplete(Pawn);
+	OnMissionComplete(Pawn, MissionSuccess);
 }

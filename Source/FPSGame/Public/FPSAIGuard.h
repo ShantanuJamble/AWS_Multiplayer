@@ -31,6 +31,11 @@ protected:
 
 	UFUNCTION()
 	void OnPawnHeard(APawn* Pawn, const FVector& Location, float volume);
+
+	FRotator OriginalRotation;
+	FTimerHandle Timerhandle_ResetRotation;
+	UFUNCTION()
+	void ResetOrientation();
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
