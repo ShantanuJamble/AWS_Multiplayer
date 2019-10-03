@@ -9,6 +9,14 @@
 class UPawnSensingComponent;
 
 
+UENUM(BlueprintType)
+enum class EnemyStates : uint8
+{
+	Idle,
+	Suspicious,
+	Alert
+};
+
 UCLASS()
 class FPSGAME_API AFPSAIGuard : public ACharacter
 {
@@ -36,6 +44,17 @@ protected:
 	FTimerHandle Timerhandle_ResetRotation;
 	UFUNCTION()
 	void ResetOrientation();
+
+
+	EnemyStates guardState;
+
+	UFUNCTION()
+	void SetGuardState(EnemyStates state);
+
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "AI")
+	void OnStateChanged(EnemyStates state);
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

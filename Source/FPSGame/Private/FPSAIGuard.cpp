@@ -14,7 +14,7 @@ AFPSAIGuard::AFPSAIGuard()
 	PrimaryActorTick.bCanEverTick = true;
 	
 	PawnSensingComponent = CreateDefaultSubobject<UPawnSensingComponent>(TEXT("PawnSensingCompoenent"));
-
+	SetGuardState(EnemyStates::Idle);
 }
 
 void AFPSAIGuard::PostInitializeComponents()
@@ -38,19 +38,23 @@ void AFPSAIGuard::OnPawnHeard(APawn* Pawn, const FVector& Location, float volume
 		return;
 	}
 
-	DrawDebugSphere(GetWorld(), Pawn->GetTargetLocation(), 32.0f, 12, FColor::Green, false, 10);
+	if (guardState != EnemyStates::Alert)
+	{
+		DrawDebugSphere(GetWorld(), Pawn->GetTargetLocation(), 32.0f, 12, FColor::Green, false, 10);
 
-	FVector Direction = Location - GetActorLocation();
-	Direction.Normalize();
+		FVector Direction = Location - GetActorLocation();
+		Direction.Normalize();
 
-	FRotator lookat = FRotationMatrix::MakeFromX(Direction).Rotator();
-	lookat.Pitch = 0.0f;
-	lookat.Roll = 0.0f;
-	SetActorRotation(lookat);
+		FRotator lookat = FRotationMatrix::MakeFromX(Direction).Rotator();
+		lookat.Pitch = 0.0f;
+		lookat.Roll = 0.0f;
+		SetActorRotation(lookat);
 
+		SetGuardState(EnemyStates::Suspicious);
 
-	GetWorldTimerManager().ClearTimer(Timerhandle_ResetRotation);
-	GetWorldTimerManager().SetTimer(Timerhandle_ResetRotation, this, &AFPSAIGuard::ResetOrientation, 3.0f);
+		GetWorldTimerManager().ClearTimer(Timerhandle_ResetRotation);
+		GetWorldTimerManager().SetTimer(Timerhandle_ResetRotation, this, &AFPSAIGuard::ResetOrientation, 3.0f);
+	}
 }
 
 void AFPSAIGuard::OnPawnSeen(APawn* Pawn)
@@ -61,15 +65,32 @@ void AFPSAIGuard::OnPawnSeen(APawn* Pawn)
 		return;
 	}
 	
+	SetGuardState(EnemyStates::Alert);
 	DrawDebugSphere(GetWorld(), Pawn->GetTargetLocation(), 32.0f, 12, FColor::Red, false, 10);
 	AFPSGameMode* GameMode = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
 	if (GameMode)
 		GameMode->CompleteMission(Pawn, false);
+
+}
+
+
+void AFPSAIGuard::SetGuardState(EnemyStates state)
+{
+	if (guardState != state)
+	{
+		guardState = state;
+		OnStateChanged(state);
+	}
 }
 
 void AFPSAIGuard::ResetOrientation()
 {
-	SetActorRotation(OriginalRotation);
+	if (guardState != EnemyStates::Alert)
+	{
+		SetActorRotation(OriginalRotation);
+		guardState = EnemyStates::Idle;
+	}
+	
 }
 
 // Called every frame
