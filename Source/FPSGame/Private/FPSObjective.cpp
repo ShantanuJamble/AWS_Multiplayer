@@ -24,6 +24,10 @@ AFPSObjective::AFPSObjective()
 	CollisionSphere->SetupAttachment(MeshComp);
 
 
+	//Networking
+	
+	SetReplicates(true);
+
 }
 
 // Called when the game starts or when spawned
@@ -47,13 +51,16 @@ void AFPSObjective::PlayEffects()
 void AFPSObjective::NotifyActorBeginOverlap(AActor* OtherActor)
 {
 	Super::NotifyActorBeginOverlap(OtherActor);
-	AFPSCharacter* actor = Cast<AFPSCharacter>(OtherActor);
 	PlayEffects();
-	if (actor)
+	if (Role == ROLE_Authority)
 	{
-		actor->bIsCarryingObjective = true;
+		AFPSCharacter* actor = Cast<AFPSCharacter>(OtherActor);
+		if (actor)
+		{
+			actor->bIsCarryingObjective = true;
 
-		Destroy();
+			Destroy();
+		}
 	}
 	
 }

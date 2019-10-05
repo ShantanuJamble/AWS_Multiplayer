@@ -45,11 +45,14 @@ protected:
 	UFUNCTION()
 	void ResetOrientation();
 
-
+	UPROPERTY(ReplicatedUsing=OnRep_GuardState)
 	EnemyStates guardState;
 
 	UFUNCTION()
 	void SetGuardState(EnemyStates state);
+
+	UFUNCTION()
+	void OnRep_GuardState();
 
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "AI")

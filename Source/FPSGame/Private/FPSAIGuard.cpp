@@ -7,6 +7,8 @@
 #include "DrawDebugHelpers.h"
 #include "TimerManager.h"
 #include "GameFramework/Actor.h"
+#include "Net/UnrealNetwork.h"
+
 // Sets default values
 AFPSAIGuard::AFPSAIGuard()
 {
@@ -73,13 +75,19 @@ void AFPSAIGuard::OnPawnSeen(APawn* Pawn)
 
 }
 
+void AFPSAIGuard::OnRep_GuardState()
+{
+	OnStateChanged(guardState);
+}
+
 
 void AFPSAIGuard::SetGuardState(EnemyStates state)
 {
 	if (guardState != state)
 	{
 		guardState = state;
-		OnStateChanged(state);
+		OnRep_GuardState();
+		OnStateChanged(guardState);
 	}
 }
 
@@ -100,5 +108,9 @@ void AFPSAIGuard::Tick(float DeltaTime)
 
 }
 
-
+void AFPSAIGuard::GetLifetimeReplicatedProps(TArray< class FLifetimeProperty >& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(AFPSAIGuard, guardState);
+}
 

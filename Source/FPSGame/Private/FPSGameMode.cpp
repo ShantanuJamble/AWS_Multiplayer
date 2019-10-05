@@ -1,9 +1,11 @@
-// Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
+	// Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
 
 #include "FPSGameMode.h"
 #include "FPSHUD.h"
 #include "FPSCharacter.h"
+#include "FPSGameState.h"
 #include "UObject/ConstructorHelpers.h"
+#include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
 
 AFPSGameMode::AFPSGameMode()
@@ -14,6 +16,7 @@ AFPSGameMode::AFPSGameMode()
 
 	// use our custom HUD class
 	HUDClass = AFPSHUD::StaticClass();
+	GameStateClass = AFPSGameState::StaticClass();
 }
 
 
@@ -30,10 +33,15 @@ void AFPSGameMode::CompleteMission(APawn* Pawn, bool MissionSuccess)
 		AActor* NewViewTarget = (SpectatorList.Num() > 0) ? SpectatorList[0] : nullptr;
 		if (NewViewTarget)
 		{
-			APlayerController* PC = Cast<APlayerController>(Pawn->GetController());
-			if (PC)
+
+			for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
 			{
-				PC->SetViewTargetWithBlend(NewViewTarget, 1.0f, EViewTargetBlendFunction::VTBlend_Cubic);
+
+				APlayerController* PC = It->Get();
+				if (PC)
+				{
+					PC->SetViewTargetWithBlend(NewViewTarget, 1.0f, EViewTargetBlendFunction::VTBlend_Cubic);
+				}
 			}
 		}
 
@@ -42,6 +50,14 @@ void AFPSGameMode::CompleteMission(APawn* Pawn, bool MissionSuccess)
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("SpectatingActorClasses or pawn is null"));
+	}
+
+
+
+	AFPSGameState* GS = GetGameState<AFPSGameState>();
+	if (GS)
+	{
+		GS->MulticastOnMissionComplete(Pawn, MissionSuccess);
 	}
 	OnMissionComplete(Pawn, MissionSuccess);
 }
