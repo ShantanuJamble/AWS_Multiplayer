@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "4.22",
+	"EngineAssociation": "{FEED8580-4D0A-2C43-5825-FAA887F54B22}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -12,5 +12,12 @@
 				"Engine"
 			]
 		}
+	],
+	"Plugins": [
+		{
+			"Name": "GameLiftServerSDK",
+			"Enabled": true
+		},
+	
 	]
 }

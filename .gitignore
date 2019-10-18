@@ -1,4 +1,5 @@
 Binaries/*
+Plugins/*/Binaries/*
 # Visual Studio 2015 user specific files
 .vs/
 
@@ -67,6 +68,8 @@ Saved/*
 
 # Compiled source files for the engine to use
 Intermediate/*
+
+Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
