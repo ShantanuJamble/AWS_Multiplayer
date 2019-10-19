@@ -1,5 +1,6 @@
 Binaries/*
 Plugins/*/Binaries/*
+package/*
 # Visual Studio 2015 user specific files
 .vs/
 

@@ -16,3 +16,9 @@ GDC talks and Tutorials being used for the project can be found at *[link](https
 The starting FPS code for the project is taken from [Tom Looman's FPS Template](https://www.tomlooman.com/fps-template/)
 
 [UE4 Client SDK by Yeti Tech](https://github.com/YetiTech-Studios/UE4GameLiftClientSDK/tree/688cc418cc3b7fe8e0eaae5aefbb3758ddc89120)
+
+### AWS CLI to push the build to lift
+`aws gamelift upload-build --name FPSGame --build-version 1.0 --build-root "D:\AWS_Multiplayer\package\WindowsNoEditor" --operating-system WINDOWS_2012 --region us-east-1`
+
+### AWS CLI to create game session on gamelift
+`aws gamelift create-game-session --maximum-player-session-count 10 --fleet-id <fleet_id>`

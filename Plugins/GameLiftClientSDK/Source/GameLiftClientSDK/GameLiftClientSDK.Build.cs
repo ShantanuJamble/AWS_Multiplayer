@@ -7,6 +7,8 @@ public class GameLiftClientSDK : ModuleRules
 {
 	public GameLiftClientSDK(ReadOnlyTargetRules Target) : base(Target)
 	{
+        bEnableExceptions = true;
+
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
 		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "AWSCore" });

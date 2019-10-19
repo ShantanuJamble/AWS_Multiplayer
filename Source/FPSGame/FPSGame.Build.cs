@@ -6,7 +6,9 @@ public class FPSGame : ModuleRules
 {
 	public FPSGame(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+        bEnableExceptions = true;
+
+        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" , "AIModule", "GameLiftServerSDK","GameLiftClientSDK"});
 	}
