@@ -1,0 +1,41 @@
+{  
+         "eventVersion":"1.05",
+         "userIdentity":{  
+            "type":"Root",
+            "principalId":"136816550245",
+            "arn":"arn:aws:iam::136816550245:root",
+            "accountId":"136816550245",
+            "accessKeyId":"ASIAR7WXG4FS7WQHZ6KX",
+            "sessionContext":{  
+               "sessionIssuer":{  
+
+               },
+               "webIdFederationData":{  
+
+               },
+               "attributes":{  
+                  "mfaAuthenticated":"false",
+                  "creationDate":"2019-11-09T19:40:48Z"
+               }
+            },
+            "invokedBy":"signin.amazonaws.com"
+         },
+         "eventTime":"2019-11-09T20:45:14Z",
+         "eventSource":"cloudtrail.amazonaws.com",
+         "eventName":"DescribeTrails",
+         "awsRegion":"us-east-1",
+         "sourceIPAddress":"129.21.29.185",
+         "userAgent":"signin.amazonaws.com",
+         "requestParameters":{  
+            "trailNameList":[  
+
+            ],
+            "includeShadowTrails":True
+         },
+         "responseElements":None,
+         "requestID":"4ea4841e-94bb-4896-883c-d6b8d84c33ae",
+         "eventID":"ee73d9c0-6fb7-4afd-afc8-2f0133e4fb58",
+         "readOnly":True,
+         "eventType":"AwsApiCall",
+         "recipientAccountId":"136816550245"
+      },
