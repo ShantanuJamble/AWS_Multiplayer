@@ -9,8 +9,9 @@ This is a research project where I am building the multiplayer code on top of AW
 	3. Testing for scaling and support. 
 
 # Resources:
-GDC talks and Tutorials being used for the project can be found at *[link](https://docs.google.com/spreadsheets/d/1rYbCugIDJeewsHSxHRQ65mhBmB13Ui00EbTWOu1p5P4/edit?usp=sharing)*
+- GDC talks and Tutorials being used for the project can be found at *[link](https://docs.google.com/spreadsheets/d/1rYbCugIDJeewsHSxHRQ65mhBmB13Ui00EbTWOu1p5P4/edit?usp=sharing)*
 
+- Resource links in the repo are under folder Research_docs
 
 # Credits:
 The starting FPS code for the project is taken from [Tom Looman's FPS Template](https://www.tomlooman.com/fps-template/)
