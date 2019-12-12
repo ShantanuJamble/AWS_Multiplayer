@@ -14,7 +14,8 @@ This is a research project where I am building the multiplayer game on top of AW
 	2. Automating session creation and basic setup for Unreal to work with AWS currently most of stuff is manual.
 	3. Adding team based gameplay.Current target was just POC, so focus was more on getting it to AWS than adding maore gameplay feratures.
 	
-
+# Testing plan:
+The basic test plan is under document **"Test plan for AWS Independent Study.pdf"**.
 
 # Resources:
 - GDC talks and Tutorials being used for the project can be found at *[link](https://docs.google.com/spreadsheets/d/1rYbCugIDJeewsHSxHRQ65mhBmB13Ui00EbTWOu1p5P4/edit?usp=sharing)*
