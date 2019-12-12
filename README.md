@@ -1,12 +1,20 @@
 #Project Motivation:
 
-This is a research project where I am building the multiplayer code on top of AWS infrastructure.
+This is a research project where I am building the multiplayer game on top of AWS infrastructure.
 
-# Plan:
+# Project OutComes:
 
-	1. Build microservices for the Login, Gameplay, Temelmetry.
-	2. Research different AWS services and choose best suited for the use case.
-	3. Testing for scaling and support. 
+	1. Hosted FPS game built on Unreal on AWS GameLift
+	2. Built microservices for the Temelmetry about Gamelift's performance. The tool is hosted on AWS Lambda which is triggered as a cron job. 
+	3. Research different AWS services and choose best suited for the use case.
+	4. Testing for scaling support design plan. 
+
+# Future plans:
+	1. Adding login mechanism like Steam login to the game
+	2. Automating session creation and basic setup for Unreal to work with AWS currently most of stuff is manual.
+	3. Adding team based gameplay.Current target was just POC, so focus was more on getting it to AWS than adding maore gameplay feratures.
+	
+
 
 # Resources:
 - GDC talks and Tutorials being used for the project can be found at *[link](https://docs.google.com/spreadsheets/d/1rYbCugIDJeewsHSxHRQ65mhBmB13Ui00EbTWOu1p5P4/edit?usp=sharing)*
