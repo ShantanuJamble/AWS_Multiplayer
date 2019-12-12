@@ -5,9 +5,18 @@ This is a research project where I am building the multiplayer game on top of AW
 # Project OutComes:
 
 	1. Hosted FPS game built on Unreal on AWS GameLift
-	2. Built microservices for the Temelmetry about Gamelift's performance. The tool is hosted on AWS Lambda which is triggered as a cron job. 
+	2. Built microservice for the Temelmetry about Gamelift's performance. The tool is hosted on AWS Lambda which is triggered as a cron job. 
 	3. Research different AWS services and choose best suited for the use case.
 	4. Testing for scaling support design plan. 
+
+### Unreal Documention for hosting game on AWS GameLift
+- [Tutorial on integrating Unreal with Amazon GameLift](https://answers.unrealengine.com/questions/884106/view.html) \
+	This covers how to add GameLift Server SDK to the Unreal engine as a module and get it build and packaged with the Unreal engine's package.
+- [Using Client SDK by Yeti Tech](https://www.youtube.com/watch?v=2I8JDeMGkgc)\
+	This tutorial covers the part of using Yeti Tech's AWS client via UE to use Game lift sessions.
+
+### GameLift monitor tool Details:
+[AWSTools/Readme.md](AWSTools/Readme.md)
 
 # Future plans:
 	1. Adding login mechanism like Steam login to the game
