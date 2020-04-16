@@ -1,4 +1,4 @@
-#Project Motivation:
+# Project Motivation:
 
 This is a research project where I am building the multiplayer game on top of AWS infrastructure.
 
